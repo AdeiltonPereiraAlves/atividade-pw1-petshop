@@ -1,3 +1,5 @@
+import Petshop from "../model/Petshop";
+
 export default interface PetshopRepository{
-    inserir ():void
+    inserir (petshop: Petshop):Petshop
 }
