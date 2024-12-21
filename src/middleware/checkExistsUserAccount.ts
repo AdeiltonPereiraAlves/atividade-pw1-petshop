@@ -1,9 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import Validador from "../core/utils/Validator";
+import PetshopRepository from "../adapters/db/PetshopRepository";
+import arrayPetshop from "../adapters/db/ArrayPetshop";
 declare global {
   namespace Express {
     interface Request {
-      petshop?: any; 
+      petshop?: any;
     }
   }
 }
@@ -11,27 +13,24 @@ async function checkExistsUserAccount(
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<NextFunction|any > {
+): Promise<NextFunction | any> {
   try {
     const cnpj = req.headers["cnpj"] as string;
-    console.log(typeof cnpj)
-     if(!Validador.validateCnpj(cnpj)){
-      return res.status(400).json({ mensagem: " CNPJ inválido" });
-     }
-    const { name, pets } = req.body as any;
-    const novoPetshop = {
-      name,
-      cnpj,
-      pets,
-    };
-    console.log(novoPetshop)
-    if (await Validador.existsPetshop(cnpj)) {
-      return res.status(404).json({ mensagem: "Acesso negado: CNPJ já existe" });
+
+    const exists = await Validador.existsPetshop(cnpj);
+    if (exists) {
+      // const novoPetshop = arrayPetshop.find((petshop) => petshop.cnpj === cnpj);
+      const exitsPetshop = new PetshopRepository()
+      const novoPetshop = exitsPetshop.buscarPetshop(cnpj)
+      req.petshop = novoPetshop;
+      console.log(novoPetshop);
+
+      next();
+    } else {
+      res.status(404).json({ erro: "Cnpj não encontrado" });
     }
-    req.petshop = novoPetshop;
-    next();
   } catch (error) {
     return res.status(403).json({ mensagem: "Erro interno do servidor" });
   }
 }
-export {checkExistsUserAccount}
+export { checkExistsUserAccount };

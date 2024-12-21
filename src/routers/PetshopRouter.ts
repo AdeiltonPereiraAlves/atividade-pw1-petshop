@@ -1,7 +1,7 @@
 import { Router } from "express";
-import petshopController from '../controllers/PetshopController'
+import petshopController from '../controllers/inserirPetshopController'
 import {checkExistsUserAccount} from "../middleware/checkExistsUserAccount";
 const router = Router()
-router.post("/petshops",checkExistsUserAccount, petshopController.inserir)
+router.post("/petshops", petshopController.inserir)
 
 export default router

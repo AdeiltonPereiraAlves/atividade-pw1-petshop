@@ -4,16 +4,28 @@ import Id from "../core/shared/Id";
 import RegisterPetshop from "../core/useCase/Petshop/RegisterPetshop";
 import Petshop from "../core/model/Petshop";
 import BuscarPets from "../core/useCase/pets/BuscarPets";
+import Validador from "../core/utils/Validator";
 
 export default class PetshopController {
   static async inserir(req: Request, res: Response): Promise<Response| any> {
     try {
-      const petShop:Petshop = req.petshop
+      const {name, cnpj} = req.body
+      const validarCnpj =  Validador.validateCnpj(cnpj)
+      console.log(validarCnpj)
+      if(!validarCnpj){
+        res.status(400).json({erro: "Cnpj Inválido"})
+        return
+      }
+      const exists = await Validador.existsPetshop(cnpj)
+      if(exists ){
+          res.status(400).json({erro: "Cnpj já Existe"})
+          return
+      }
       const ObjPetshop = {
         id: Id.gerar(),
-        name: petShop.name,
-        cnpj: petShop.cnpj,
-        pets: petShop.pets,
+        name: name,
+        cnpj:cnpj,
+        pets:[],
       };
       
       const registrarPetshop = new RegisterPetshop(new PetshopRepository());
@@ -27,20 +39,5 @@ export default class PetshopController {
       res.status(404).json({erro: "Erro desconhecido"})
     }
   }
-  static async buscarPets(req: Request, res: Response):Promise<Response| any>{
-        try {
-          const petShop:Petshop = req.petshop
-          const cnpj = petShop.cnpj
-          const buscarNoPetshop = new BuscarPets(new PetshopRepository() )
-          const arrayDePets = buscarNoPetshop.buscar(cnpj)
-          if(arrayDePets){
-            res.status(200).json(arrayDePets)
-          }
-          else{
-            res.status(404).send("Não existe pets")
-          }
-        } catch (error) {
-          res.status(404).json({erro: "Erro desconhecido"})
-        }
-  }
+  
 }
