@@ -10,10 +10,11 @@ app.use(cors())
 app.use(express.json())
 
 app.use(express.urlencoded({extended:true}))
-app.use("/", petshopRouter)
+app.use("/petshops", petshopRouter)
 app.use("/",petRoter )
 
 
-app.listen(4000,() => {
+
+app.listen(3009,() => {
     console.log("Servidor Rodando")
 })

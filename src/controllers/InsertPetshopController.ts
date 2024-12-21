@@ -21,7 +21,7 @@ export default class PetshopController {
           res.status(400).json({erro: "Cnpj já Existe"})
           return
       }
-      const ObjPetshop = {
+      const ObjPetshop:Petshop = {
         id: Id.gerar(),
         name: name,
         cnpj:cnpj,
