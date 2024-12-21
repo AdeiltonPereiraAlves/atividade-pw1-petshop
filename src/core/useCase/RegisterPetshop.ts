@@ -6,7 +6,7 @@ export default class RegisterPetshop{
 
     }
     executar(petshop: Petshop){
-        this.petshopDb.inserir(petshop)
+       return this.petshopDb.inserir(petshop)
     }
 
 }

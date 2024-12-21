@@ -12,6 +12,6 @@ app.use(express.urlencoded({extended:true}))
 app.use("/", petshopRouter)
 
 
-app.listen(port,() => {
+app.listen(4000,() => {
     console.log("Servidor Rodando")
 })
