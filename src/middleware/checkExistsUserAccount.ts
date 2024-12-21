@@ -3,7 +3,7 @@ import Validador from "../core/utils/Validator";
 declare global {
   namespace Express {
     interface Request {
-      petshop?: any; // Adiciona 'authUser' como propriedade opcional
+      petshop?: any; 
     }
   }
 }
@@ -15,6 +15,9 @@ async function checkExistsUserAccount(
   try {
     const cnpj = req.headers["cnpj"] as string;
     console.log(typeof cnpj)
+     if(!Validador.validarCnpj(cnpj)){
+      return res.status(400).json({ mensagem: " CNPJ inválido" });
+     }
     const { name, pets } = req.body as any;
     const novoPetshop = {
       name,
@@ -23,7 +26,7 @@ async function checkExistsUserAccount(
     };
     console.log(novoPetshop)
     if (await Validador.existsPetshop(cnpj)) {
-      return res.status(403).json({ mensagem: "Acesso negado: CNPJ já existe" });
+      return res.status(404).json({ mensagem: "Acesso negado: CNPJ já existe" });
     }
     req.petshop = novoPetshop;
     next();
