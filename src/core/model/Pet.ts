@@ -4,7 +4,7 @@ export default interface Pet {
     type: string
     description: string
     vaccinated: false
-    deadline_vaccination: string
-    created_at: string
+    deadline_vaccination?: Date
+    created_at?: Date
 
 }

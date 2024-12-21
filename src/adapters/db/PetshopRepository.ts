@@ -38,4 +38,14 @@ export default class PetshopRepository implements PetshopPort {
       throw new Error("Erro ao enserir petshop no banco");
     }
   }
+  inserirPet(cnpj:string, pet:Pet){
+       try {
+        const petshop:Petshop = this.buscarPetshop(cnpj)
+         petshop.pets.push(pet)
+         return pet
+        
+       } catch (error) {
+        throw new Error("Erro ao enserir pet no banco");
+       }
+  }
 }

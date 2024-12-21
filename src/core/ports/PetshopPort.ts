@@ -7,4 +7,5 @@ export default interface PetshopRepository {
   buscarPets(petshop: Petshop): Pet[] |null;
   editarPet(pet: Pet): void;
   buscarPetshop(cnpj: string): Petshop
+  inserirPet(cnpj: string, pet: Pet):void
 }

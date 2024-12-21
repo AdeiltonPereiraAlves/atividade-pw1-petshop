@@ -3,7 +3,7 @@ import { Response, Request, NextFunction } from "express";
 import Id from "../core/shared/Id";
 import RegisterPetshop from "../core/useCase/Petshop/RegisterPetshop";
 import Petshop from "../core/model/Petshop";
-import BuscarPets from "../core/useCase/pets/BuscarPets";
+import BuscarPets from "../core/useCase/pets/SearchPets";
 import Validador from "../core/utils/Validator";
 
 export default class PetshopController {

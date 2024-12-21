@@ -1,10 +1,10 @@
 import Petshop from "../../model/Petshop";
 import PetshopPort from "../../ports/PetshopPort";
 
-export default class BuscarPets{
+export default class SeachPets{
     constructor(private petshopDb: PetshopPort ){}
 
-    buscar(petshop: Petshop){
+    seach(petshop: Petshop){
         return this.petshopDb.buscarPets(petshop);
     }
 }
