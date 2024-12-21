@@ -1,5 +1,5 @@
-import Petshop from "../model/Petshop";
-import PetshopPort from "../ports/PetshopPort";
+import Petshop from "../../model/Petshop";
+import PetshopPort from "../../ports/PetshopPort";
 
 export default class RegisterPetshop{
     constructor(private petshopDb: PetshopPort){

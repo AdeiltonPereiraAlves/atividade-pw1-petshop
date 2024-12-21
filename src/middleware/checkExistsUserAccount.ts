@@ -11,11 +11,11 @@ async function checkExistsUserAccount(
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<any> {
+): Promise<NextFunction|any > {
   try {
     const cnpj = req.headers["cnpj"] as string;
     console.log(typeof cnpj)
-     if(!Validador.validarCnpj(cnpj)){
+     if(!Validador.validateCnpj(cnpj)){
       return res.status(400).json({ mensagem: " CNPJ inválido" });
      }
     const { name, pets } = req.body as any;
