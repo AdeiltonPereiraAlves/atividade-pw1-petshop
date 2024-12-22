@@ -1,4 +1,4 @@
-import arrayPetshop from "../../adapters/db/ArrayPetshop";
+import arrayPetshop from "../src/adapters/db/ArrayPetshop";
 
 export default class Validador {
   static validateCnpj(cnpj: string): boolean {
@@ -11,5 +11,16 @@ export default class Validador {
     );
 
     return equals;
+  }
+  static validateId(id: string): boolean {
+    if(!id){
+      return false
+    }
+     if(id.length !==36){
+        return false
+     }
+     else{
+        return true
+     }
   }
 }

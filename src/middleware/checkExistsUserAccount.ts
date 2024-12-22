@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import Validador from "../core/utils/Validator";
+import Validador from "../../utils/Validator";
 import PetshopRepository from "../adapters/db/PetshopRepository";
 
 declare global {

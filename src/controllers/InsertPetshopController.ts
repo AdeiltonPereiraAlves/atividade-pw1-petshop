@@ -4,7 +4,7 @@ import Id from "../core/shared/Id";
 import RegisterPetshop from "../core/useCase/Petshop/RegisterPetshop";
 import Petshop from "../core/model/Petshop";
 import BuscarPets from "../core/useCase/pets/SearchPets";
-import Validator from "../core/utils/Validator";
+import Validator from "../../utils/Validator";
 
 export default class PetshopController {
   static async insert(req: Request, res: Response): Promise<Response| any> {

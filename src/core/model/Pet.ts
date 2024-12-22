@@ -3,7 +3,7 @@ export default interface Pet {
     name: string
     type: string
     description: string
-    vaccinated: false
+    vaccinated: boolean
     deadline_vaccination?: Date
     created_at?: Date
 

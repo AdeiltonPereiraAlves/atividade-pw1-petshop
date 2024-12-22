@@ -6,4 +6,5 @@ export default interface PetsPort{
        seachPets(petshop: Petshop): Pet[] | null;
        editPet(cnpj: string, pet: Pet): void;
        insertPet(cnpj: string, pet: Pet): void;
+       alterVaccinated(cnpj: string,id: string): Pet;
 }
