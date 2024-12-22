@@ -3,9 +3,10 @@ import Petshop from "../core/model/Petshop";
 import AlterVaccinated from "../core/useCase/pets/AlterVaccinated";
 import PetshopRepository from "../adapters/db/PetshopRepository";
 import Validador from "../../utils/Validator";
+import Pet from "../core/model/Pet";
 
 export default class AlterVaccinatedController {
-  static async Alter(req: Request, res: Response) {
+  static async Alter(req: Request, res: Response):Promise<Pet | any> {
     try {
       const petShop: Petshop = req.petshop;
       const { id } = req.params;

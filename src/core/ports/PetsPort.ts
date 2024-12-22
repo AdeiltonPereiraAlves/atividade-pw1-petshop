@@ -7,4 +7,5 @@ export default interface PetsPort{
        editPet(cnpj: string, pet: Pet): void;
        insertPet(cnpj: string, pet: Pet): void;
        alterVaccinated(cnpj: string,id: string): Pet;
+       deletePet(cnpj:string, id: string): Pet[]
 }

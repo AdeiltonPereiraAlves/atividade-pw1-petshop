@@ -21,7 +21,7 @@ export default class PetshopRepository implements PetshopPort, PetsPort {
     }
 
     const pet = pets.find((pet: Pet) => pet.id === id); // o bug ta aqui  para corrigir
-   
+
     if (!pet) {
       throw new Error("Pet não exite");
     }
@@ -58,8 +58,8 @@ export default class PetshopRepository implements PetshopPort, PetsPort {
 
   insert(petshop: Petshop): Petshop | true {
     try {
-      arrayPetshop.push(petshop);
-      console.log(arrayPetshop);
+       arrayPetshop.push(petshop);
+    
       return petshop;
     } catch (error) {
       throw new Error("Erro ao enserir petshop no banco");
@@ -77,9 +77,14 @@ export default class PetshopRepository implements PetshopPort, PetsPort {
       throw new Error("Erro ao enserir pet no banco");
     }
   }
-  alterVaccinated(cnpj: string, id: string){
-     const pet:Pet = this.seachPet(cnpj, id)
-     pet.vaccinated = true
-     return pet;
+  alterVaccinated(cnpj: string, id: string) {
+    const pet: Pet = this.seachPet(cnpj, id);
+    pet.vaccinated = true;
+    return pet;
+  }
+  deletePet(cnpj: string, id: string): Pet[] {
+    const petShop: Petshop = this.seachPetshop(cnpj);
+    const newArrayPets = petShop.pets.filter((pet) => pet.id !== id);
+    return newArrayPets;
   }
 }
