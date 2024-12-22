@@ -1,11 +1,9 @@
 import Pet from "../model/Pet";
 import Petshop from "../model/Petshop";
+import PetsPort from "./PetsPort";
 
-export default interface PetshopRepository {
-  inserir(petshop: Petshop): Petshop | true;
-  buscarPet(cnpj: string,id: string): Pet | null;
-  buscarPets(petshop: Petshop): Pet[] |null;
-  editarPet(cnpj:string,pet: Pet): void;
-  buscarPetshop(cnpj: string): Petshop
-  inserirPet(cnpj: string, pet: Pet):void
+export default interface PetshopRepository extends PetsPort {
+  insert(petshop: Petshop): Petshop | true;
+  seachPetshop(cnpj: string): Petshop;
+  
 }

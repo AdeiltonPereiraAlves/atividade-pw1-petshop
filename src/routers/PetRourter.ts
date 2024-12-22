@@ -4,8 +4,8 @@ import { checkExistsUserAccount } from "../middleware/checkExistsUserAccount";
 import  insertPet from "../controllers/InsertPetController"
 import editPet from "../controllers/EditPetController"
 const router = Router()                                                            
-router.get("/pets",checkExistsUserAccount, buscarPetsNoPetshop.buscarPets )
-router.post("/pets", checkExistsUserAccount,insertPet.inserir )
+router.get("/pets",checkExistsUserAccount, buscarPetsNoPetshop.seachPets )
+router.post("/pets", checkExistsUserAccount,insertPet.insert)
 router.put("/pets/:id", checkExistsUserAccount,editPet.edit )
 
 export default router

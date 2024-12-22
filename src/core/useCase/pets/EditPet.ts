@@ -4,6 +4,6 @@ import PetshopPort from "../../ports/PetshopPort";
 export default class EditPet{
     constructor(private petDB: PetshopPort){}
     edit(cnpj:string, pet:Pet){
-        return this.petDB.editarPet(cnpj, pet)
+        return this.petDB.editPet(cnpj, pet)
     }
 }

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Validador from "../core/utils/Validator";
 import PetshopRepository from "../adapters/db/PetshopRepository";
-import arrayPetshop from "../adapters/db/ArrayPetshop";
+
 declare global {
   namespace Express {
     interface Request {
@@ -13,7 +13,7 @@ async function checkExistsUserAccount(
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<NextFunction | any> {
+): Promise<NextFunction | any > {
   try {
     const cnpj = req.headers["cnpj"] as string;
 
@@ -21,9 +21,9 @@ async function checkExistsUserAccount(
     if (exists) {
       // const novoPetshop = arrayPetshop.find((petshop) => petshop.cnpj === cnpj);
       const exitsPetshop = new PetshopRepository()
-      const novoPetshop = exitsPetshop.buscarPetshop(cnpj)
-      req.petshop = novoPetshop;
-      console.log(novoPetshop);
+      const newPetshop = exitsPetshop.seachPetshop(cnpj)
+      req.petshop = newPetshop;
+     
 
       next();
     } else {

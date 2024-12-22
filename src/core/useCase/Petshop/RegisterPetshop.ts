@@ -5,8 +5,8 @@ export default class RegisterPetshop{
     constructor(private petshopDb: PetshopPort){
 
     }
-    executar(petshop: Petshop){
-       return this.petshopDb.inserir(petshop)
+    execute(petshop: Petshop){
+       return this.petshopDb.insert(petshop)
     }
 
 }

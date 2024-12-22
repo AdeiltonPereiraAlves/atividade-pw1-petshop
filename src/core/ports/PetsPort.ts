@@ -1,8 +1,9 @@
 import Pet from "../model/Pet"
+import Petshop from "../model/Petshop";
 
 export default interface PetsPort{
-     inserir():void
-     buscarPet(id:string): Pet | null
-     buscarPets():Pet[]| null
-     editarPet(pet: Pet): void 
+       seachPet(cnpj: string, id: string): Pet | null;
+       seachPets(petshop: Petshop): Pet[] | null;
+       editPet(cnpj: string, pet: Pet): void;
+       insertPet(cnpj: string, pet: Pet): void;
 }

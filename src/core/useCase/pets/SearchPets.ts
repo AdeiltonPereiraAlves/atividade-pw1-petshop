@@ -5,6 +5,6 @@ export default class SeachPets{
     constructor(private petshopDb: PetshopPort ){}
 
     seach(petshop: Petshop){
-        return this.petshopDb.buscarPets(petshop);
+        return this.petshopDb.seachPets(petshop);
     }
 }
