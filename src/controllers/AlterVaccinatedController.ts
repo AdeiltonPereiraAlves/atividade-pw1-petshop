@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Petshop from "../core/model/Petshop";
 import AlterVaccinated from "../core/useCase/pets/AlterVaccinated";
 import PetshopRepository from "../adapters/db/PetshopRepository";
-import Validador from "../../utils/Validator";
+import Validador from "../utils/Validator";
 import Pet from "../core/model/Pet";
 
 export default class AlterVaccinatedController {

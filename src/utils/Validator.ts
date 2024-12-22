@@ -1,4 +1,4 @@
-import arrayPetshop from "../src/adapters/db/ArrayPetshop";
+import arrayPetshop from "../adapters/db/ArrayPetshop";
 
 export default class Validador {
   static validateCnpj(cnpj: string): boolean {

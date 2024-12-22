@@ -109,5 +109,5 @@
     "skipLibCheck": true ,                               /* Skip type checking all .d.ts files. */
     "outDir": "dist"
   },
-  "include":["src/**/*", "utils"]
+  "include":["src/**/*", "src/utils"]
 }
