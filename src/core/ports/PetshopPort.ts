@@ -3,7 +3,7 @@ import Petshop from "../model/Petshop";
 import PetsPort from "./PetsPort";
 
 export default interface PetshopRepository extends PetsPort {
-  insert(petshop: Petshop): Petshop | true;
-  seachPetshop(cnpj: string): Petshop;
+  insert(petshop: Petshop): Petshop;
+  seachPetshop(cnpj: string): Petshop ;
   
 }

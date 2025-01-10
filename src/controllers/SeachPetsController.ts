@@ -4,7 +4,7 @@ import Petshop from "../core/model/Petshop";
 import seachPets from "../core/useCase/pets/SearchPets";
 import { Response, Request } from "express";
 export default class BuscarPetsController {
-  static async seachPets(req: Request, res: Response): Promise<Response | any> {
+  static  seachPets(req: Request, res: Response) {
     try {
       const petShop: Petshop = req.petshop;
 

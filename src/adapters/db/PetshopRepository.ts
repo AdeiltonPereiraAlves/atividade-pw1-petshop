@@ -5,17 +5,20 @@ import PetsPort from "../../core/ports/PetsPort";
 import arrayPetshop from "./ArrayPetshop";
 
 export default class PetshopRepository implements PetshopPort, PetsPort {
-  seachPetshop(cnpj: string): Petshop | any {
+  seachPetshop(cnpj: string): Petshop  {
     try {
       const newPetshop = arrayPetshop.find((petshop) => petshop.cnpj === cnpj);
+      if(!newPetshop){
+        throw new Error("Petshop não encontrado.");
+      }
       return newPetshop;
     } catch (error) {
       throw new Error("Petshop não encontrado.");
     }
   }
   seachPet(cnpj: string, id: string): Pet {
-    const petshop: Petshop = this.seachPetshop(cnpj);
-    const pets: Pet[] = this.seachPets(petshop);
+    const petshop: Petshop  = this.seachPetshop(cnpj);
+    const pets: Pet[] = this.seachPets(petshop!);
     if (!pets || pets.length === 0) {
       throw new Error("Nenhum pet encontrado para este petshop.");
     }
@@ -26,7 +29,7 @@ export default class PetshopRepository implements PetshopPort, PetsPort {
       throw new Error("Pet não exite");
     }
 
-    return pet;
+    return pet??null;
   }
 
   seachPets(petshop: Petshop): Pet[] {
@@ -37,13 +40,13 @@ export default class PetshopRepository implements PetshopPort, PetsPort {
       throw new Error("Erro ao retornar pets");
     }
   }
-  editPet(cnpj: string, pet: Pet): any {
+  editPet(cnpj: string, pet: Pet): Pet {
     const id: string = pet.id as any;
 
     const petShopReceveid: Petshop = this.seachPetshop(cnpj); // aqui olhar tbm o bug
 
     if (!petShopReceveid) {
-      return new Error("Pet nâo existe");
+      throw new Error("Pet nâo existe");
     }
     const petIndex = petShopReceveid.pets.findIndex((p) => p.id === id);
 
@@ -56,7 +59,7 @@ export default class PetshopRepository implements PetshopPort, PetsPort {
     return petShopReceveid.pets[petIndex];
   }
 
-  insert(petshop: Petshop): Petshop | true {
+  insert(petshop: Petshop): Petshop {
     try {
        arrayPetshop.push(petshop);
     

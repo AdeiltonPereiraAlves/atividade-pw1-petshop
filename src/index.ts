@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-const port = process.env.PORT
+const port =3009;
 import petshopRouter from "../src/routers/PetshopRouter"
 import petRoter from "./routers/PetRourter"
 dotenv.config()
@@ -15,6 +15,6 @@ app.use("/",petRoter )
 
 
 
-app.listen(3009,() => {
-    console.log("Servidor Rodando")
+app.listen(port,() => {
+    console.log(`Servidor Rodando,${port}`)
 })

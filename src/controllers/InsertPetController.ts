@@ -5,10 +5,10 @@ import PetshopRepository from "../adapters/db/PetshopRepository";
 import Pet from "../core/model/Pet";
 import Id from "../core/shared/Id";
 export default class InsertPetController {
-  static async insert(req: Request, res: Response): Promise<boolean | any> {
+  static insert(req: Request, res: Response){
     try {
       const petShop: Petshop = req.petshop;
-      const cnpj = petShop.cnpj;
+      const cnpj:string = petShop.cnpj;
       const pet: Pet = {
         id: Id.gerar(),
         name: req.body.name,
@@ -19,8 +19,8 @@ export default class InsertPetController {
         created_at: new Date(),
       };
 
-      const RegisterPetNow = new RegisterPet(new PetshopRepository());
-      const petCreated: Pet | any = RegisterPetNow.register(cnpj, pet);
+      const RegisterPetNow:RegisterPet = new RegisterPet(new PetshopRepository());
+      const petCreated: Pet = RegisterPetNow.register(cnpj, pet);
       if (!petCreated) {
         res.status(404).json({ error: "Pet não criado." });
         return;

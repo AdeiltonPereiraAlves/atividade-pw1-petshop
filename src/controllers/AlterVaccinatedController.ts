@@ -6,7 +6,7 @@ import Validador from "../utils/Validator";
 import Pet from "../core/model/Pet";
 
 export default class AlterVaccinatedController {
-  static async Alter(req: Request, res: Response):Promise<Pet | any> {
+  static  Alter(req: Request, res: Response):Pet|any{
     try {
       const petShop: Petshop = req.petshop;
       const { id } = req.params;
@@ -19,8 +19,8 @@ export default class AlterVaccinatedController {
         res.status(404).json({ erro: "Pethop não existe" });
         return;
       }
-      const AlterVaccinatedNow = new AlterVaccinated(new PetshopRepository());
-      const isVaccinated = AlterVaccinatedNow.alter(petShop.cnpj, id);
+      const AlterVaccinatedNow:AlterVaccinated = new AlterVaccinated(new PetshopRepository());
+      const isVaccinated:Pet = AlterVaccinatedNow.alter(petShop.cnpj, id);
 
       if (!isVaccinated) {
         res.status(404).json({ erro: "Pet Não existe" });

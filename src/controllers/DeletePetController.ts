@@ -7,7 +7,7 @@ import PetshopRepository from "../adapters/db/PetshopRepository";
 
 
 export default class DeletePetController{
-     static async delete(req: Request, res:Response){
+     static  delete(req: Request, res:Response){
         try {
             const petShop: Petshop  = req.petshop
             const {id} =req.params

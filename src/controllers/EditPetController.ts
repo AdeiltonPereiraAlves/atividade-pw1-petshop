@@ -5,7 +5,7 @@ import EditPet from "../core/useCase/pets/EditPet";
 import PetshopRepository from "../adapters/db/PetshopRepository";
 
 export default class EditPetController {
-  static async edit(req: Request, res: Response): Promise<any> {
+  static edit(req: Request, res: Response) {
     try {
       const petShop: Petshop = req.petshop;
       const { id } = req.params;
@@ -30,8 +30,8 @@ export default class EditPetController {
       };
       
 
-      const editPetNow = new EditPet(new PetshopRepository());
-      const petEdited: Pet | any = editPetNow.edit(petShop.cnpj, petEdit);
+      const editPetNow:EditPet= new EditPet(new PetshopRepository());
+      const petEdited: Pet= editPetNow.edit(petShop.cnpj, petEdit);
 
       
       if (!petEdited) {

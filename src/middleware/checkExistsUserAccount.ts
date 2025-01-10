@@ -17,7 +17,7 @@ async function checkExistsUserAccount(
   try {
     const cnpj = req.headers["cnpj"] as string;
 
-    const exists = await Validador.existsPetshop(cnpj);
+    const exists =  Validador.existsPetshop(cnpj);
     if (exists) {
       // const novoPetshop = arrayPetshop.find((petshop) => petshop.cnpj === cnpj);
       const exitsPetshop = new PetshopRepository()
