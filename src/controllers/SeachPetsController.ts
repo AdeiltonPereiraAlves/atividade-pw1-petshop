@@ -16,7 +16,7 @@ export default class BuscarPetsController {
         res.status(404).json("Não existe pets");
       }
     } catch (error) {
-      res.status(404).json({ erro: "Erro desconhecido" });
+      res.status(404).json({ error: "Erro desconhecido" });
     }
   }
 }

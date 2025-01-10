@@ -12,12 +12,12 @@ export default class PetshopController {
       const validateCnpj =  Validator.validateCnpj(cnpj)
      
       if(!validateCnpj){
-        res.status(400).json({erro: "Cnpj Inválido"})
+        res.status(400).json({error: "Cnpj Inválido"})
         return
       }
       const exists = Validator.existsPetshop(cnpj)
       if(exists ){
-          res.status(400).json({erro: "Cnpj já Existe"})
+          res.status(400).json({error: "Cnpj já Existe"})
           return
       }
       const ObjPetshop:Petshop = {

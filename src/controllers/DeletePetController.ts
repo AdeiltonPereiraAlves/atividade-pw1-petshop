@@ -22,7 +22,7 @@ export default class DeletePetController{
             }
             const deletePet = new DeletePet(new PetshopRepository())
             const arrayPets = deletePet.delete(petShop.cnpj, id)
-            if(!arrayPets){
+            if(arrayPets.length===0){
                 res.status(404).json({erro: "array de pets inválido"})
             }
             res.status(200).json(arrayPets)

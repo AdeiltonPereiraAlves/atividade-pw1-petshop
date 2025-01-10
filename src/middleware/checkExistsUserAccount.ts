@@ -27,7 +27,7 @@ async function checkExistsUserAccount(
 
       next();
     } else {
-      res.status(404).json({ erro: "Cnpj não encontrado" });
+      res.status(404).json({ error: "Cnpj não encontrado" });
     }
   } catch (error) {
     return res.status(403).json({ mensagem: "Erro interno do servidor" });

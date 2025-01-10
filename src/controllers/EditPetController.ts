@@ -43,7 +43,7 @@ export default class EditPetController {
       res.status(200).json(petEdited);
     } catch (error: any) {
       console.error("Erro no controlador de edição de pets:", error.message);
-      res.status(404).json({ erro: "Erro desconhecido" });
+      res.status(404).json({ error: "Pet não encontrado" });
     }
   }
 }

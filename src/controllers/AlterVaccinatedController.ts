@@ -31,7 +31,7 @@ export default class AlterVaccinatedController {
       console.error("Erro na edião de vacinação do pets:", error.message);
       return res
         .status(404)
-        .json({ erro: "Erro desconhecido no alter vacinated" });
+        .json({ error: "Erro ao alterar vacinação" });
     }
   }
 }

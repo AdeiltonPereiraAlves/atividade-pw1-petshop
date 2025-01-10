@@ -87,6 +87,10 @@ export default class PetshopRepository implements PetshopPort, PetsPort {
   }
   deletePet(cnpj: string, id: string): Pet[] {
     const petShop: Petshop = this.seachPetshop(cnpj);
+    const isId = petShop.pets.some((pet) => pet.id === id)
+    if(!isId){
+      throw new Error("id não existe nesse Petshop");
+    }
     const newArrayPets = petShop.pets.filter((pet) => pet.id !== id);
     return newArrayPets;
   }
