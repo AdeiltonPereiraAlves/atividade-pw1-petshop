@@ -13,7 +13,7 @@ async function checkExistsUserAccount(
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<NextFunction | any > {
+): Promise<void > {
   try {
     const cnpj = req.headers["cnpj"] as string;
 
@@ -30,7 +30,7 @@ async function checkExistsUserAccount(
       res.status(404).json({ error: "Cnpj não encontrado" });
     }
   } catch (error) {
-    return res.status(403).json({ mensagem: "Erro interno do servidor" });
+    res.status(403).json({ mensagem: "Erro interno do servidor" });
   }
 }
 export { checkExistsUserAccount };
